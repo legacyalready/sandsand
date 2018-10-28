@@ -1,0 +1,83 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "/usr/bin/env node ./bin/server",
+    "test": "mocha --reporter spec",
+    "watch": "watch mocha --reporter spec",
+    "coverage": "nyc npm test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "docker:test": "docker-compose run --rm --service-ports test npm test",
+    "docker:watch": "docker-compose run --rm --service-ports test npm run watch",
+    "docker:coverage": "docker-compose run --rm test npm run coverage",
+    "docker:lint": "docker-compose run --rm test npm run coverage",
+    "docker:migrate": "docker-compose run --rm test npm run db:migrate",
+    "report": "nyc report --reporter=html",
+    "full": "npm run coverage && npm run report",
+    "precommit": "npm run lint",
+    "db:migrate": "./bin/migrate"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "bake-cli": "^0.1.6",
+    "eslint": "^3.11.1",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-standard": "^1.3.2",
+    "mocha": "^5.2.0",
+    "standard-version": "^2.2.1",
+    "watchd": "github:mklabs/watchd",
+    "bandname": "^1.0.0",
+    "doubleagent": "^1.1.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "husky": "^0.11.9",
+    "nyc": "^13.0.1",
+    "watch": "^1.0.1"
+  },
+  "bake": {
+    "description": "Scaffold a basic ES6 setup",
+    "scripts": {
+      "start": "echo Starting generation of default template",
+      "prestart": "echo prestart",
+      "poststart": "echo poststart",
+      "install": "npm install --loglevel warn --cache-min Infinity",
+      "preinstall": "echo Installing dependencies ...",
+      "postinstall": "npm ls --depth 0"
+    }
+  },
+  "engines": {
+    "node": "^8.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davidbanham/node_docker_boilerplate.git"
+  },
+  "author": "david@banham.id.au",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidbanham/node_docker_boilerplate/issues"
+  },
+  "homepage": "https://github.com/davidbanham/node_docker_boilerplate#readme",
+  "dependencies": {
+    "basic-auth": "^1.1.0",
+    "body-parser": "^1.15.2",
+    "bunyan": "^1.8.5",
+    "express": "^4.14.0",
+    "express-async-errors": "^2.0.0",
+    "httperrors": "^2.1.0",
+    "must": "^0.13.4",
+    "pg": "^7.3.0",
+    "postgrator-cli": "^3.0.0",
+    "required_env": "^1.0.0",
+    "uuid": "^3.0.1"
+  }
+}
